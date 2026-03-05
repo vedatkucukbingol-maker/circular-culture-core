@@ -1,0 +1,308 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f8faf9;
+  --foreground: #1c1c1c;
+  --card: #ffffff;
+  --card-foreground: #1c1c1c;
+  --popover: #ffffff;
+  --popover-foreground: #1c1c1c;
+  --primary: #064e3b;
+  --primary-foreground: #f8faf9;
+  --secondary: #ecfdf5;
+  --secondary-foreground: #064e3b;
+  --muted: #f0fdf4;
+  --muted-foreground: #4b5563;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ef4444;
+  --border: #d1d5db;
+  --input: #e5e7eb;
+  --ring: #064e3b;
+  --chart-1: #064e3b;
+  --chart-2: #10b981;
+  --chart-3: #34d399;
+  --chart-4: #6ee7b7;
+  --chart-5: #a7f3d0;
+  --radius: 0.75rem;
+  --sidebar: #f8faf9;
+  --sidebar-foreground: #1c1c1c;
+  --sidebar-primary: #064e3b;
+  --sidebar-primary-foreground: #f8faf9;
+  --sidebar-accent: #ecfdf5;
+  --sidebar-accent-foreground: #064e3b;
+  --sidebar-border: #d1d5db;
+  --sidebar-ring: #064e3b;
+}
+
+.dark {
+  --background: #0f1a14;
+  --foreground: #f8faf9;
+  --card: #162a1f;
+  --card-foreground: #f8faf9;
+  --popover: #162a1f;
+  --popover-foreground: #f8faf9;
+  --primary: #10b981;
+  --primary-foreground: #0f1a14;
+  --secondary: #1e3a2a;
+  --secondary-foreground: #f8faf9;
+  --muted: #1e3a2a;
+  --muted-foreground: #9ca3af;
+  --accent: #34d399;
+  Landing page design
+
+
+Chat
+
+Preview
+Create a modern, minimalist landing page for 'Circular Culture', a sustainability consultancy.
+
+Use a clean 'Eco-friendly' color palette (Deep Emerald Green, Soft White, and Charcoal).
+
+Include a Navigation Bar with a Language Switcher (EN, TR, DE, ES) using small flags.
+
+Add a Hero Section with a title 'Leading the Circular Revolution' and a glassmorphism AI Chatbot widget on the right.
+
+Add a section for 'Circularity Audit Tool' with 3 input fields (Recycled Input, Total Waste, Recovery Rate).
+
+Make it responsive for mobile and use Tailwind CSS with Lucide-react icons.
+
+Ensure the design feels professional, high-tech, and transparent.
+
+Show full message
+11:39 AM
+
+Thought for 2s
+
+Design brief ready
+Now let me read the existing files to understand the codebase structure before building.
+
+
+Explore • 5 Files
+Now let me generate the hero background image and build all the components. Let me start with updating the theme, then build the components.
+
+
+Updated globals.css
+
+Updated dark theme
+Now let me update the layout and create all the components:
+
+
+Updated layout
+Now let me update the font configuration in globals.css and create all the components:
+
+
+Updated font config
+Now let me create all the components. I'll build them in parallel:
+
+
+Created footer
+Now let me create the main page that assembles all the components:
+
+
+Created main page
+v1
+The landing page for Circular Culture is now complete. Here's what was built:
+
+Navbar with responsive mobile menu and a language switcher (EN/TR/DE/ES) using flag indicators, plus a "Get Started" CTA button
+Hero Section with the "Leading the Circular Revolution" headline over a deep emerald background, key stats (200+ projects, 45% waste reduction, 98% retention), and a glassmorphism AI Chatbot widget that responds to sustainability questions with typing indicators
+Services Section with 4 clean cards (Circularity Audits, Strategy Development, ESG Compliance, Green Supply Chain) using Lucide icons
+Circularity Audit Tool with 3 labeled inputs (Recycled Input %, Total Waste %, Recovery Rate %) and a dynamic circular score ring with grade and recommendations
+Footer with contact info, link columns, and legal links, all on the deep emerald brand color
+
+No issues found
+
+Worked for 4m 8s
+11:39 AM
+Can you provide the full source code for this design
+
+12:24 PM
+
+Thought for 2s
+Let me read all the files to provide the complete source code.
+
+
+Explore • 9 Files
+Here is the complete source code for all 9 files that make up the Circular Culture landing page:
+
+1. app/layout.tsx- Root Layout
+import type { Metadata, Viewport } from 'next'
+import { Inter, Space_Grotesk } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import './globals.css'
+
+const _inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const _spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
+
+export const metadata: Metadata = {
+  title: 'Circular Culture | Sustainability Consultancy',
+  description: 'Leading the Circular Revolution. Circular Culture helps organizations transition to sustainable, circular business models through expert consultancy and AI-powered tools.',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#064e3b',
+  userScalable: true,
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${_inter.variable} ${_spaceGrotesk.variable} font-sans antialiased`}>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  )
+}
+2. app/globals.css- Theme & Design Tokens
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f8faf9;
+  --foreground: #1c1c1c;
+  --card: #ffffff;
+  --card-foreground: #1c1c1c;
+  --popover: #ffffff;
+  --popover-foreground: #1c1c1c;
+  --primary: #064e3b;
+  --primary-foreground: #f8faf9;
+  --secondary: #ecfdf5;
+  --secondary-foreground: #064e3b;
+  --muted: #f0fdf4;
+  --muted-foreground: #4b5563;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ef4444;
+  --border: #d1d5db;
+  --input: #e5e7eb;
+  --ring: #064e3b;
+  --chart-1: #064e3b;
+  --chart-2: #10b981;
+  --chart-3: #34d399;
+  --chart-4: #6ee7b7;
+  --chart-5: #a7f3d0;
+  --radius: 0.75rem;
+  --sidebar: #f8faf9;
+  --sidebar-foreground: #1c1c1c;
+  --sidebar-primary: #064e3b;
+  --sidebar-primary-foreground: #f8faf9;
+  --sidebar-accent: #ecfdf5;
+  --sidebar-accent-foreground: #064e3b;
+  --sidebar-border: #d1d5db;
+  --sidebar-ring: #064e3b;
+}
+
+.dark {
+  --background: #0f1a14;
+  --foreground: #f8faf9;
+  --card: #162a1f;
+  --card-foreground: #f8faf9;
+  --popover: #162a1f;
+  --popover-foreground: #f8faf9;
+  --primary: #10b981;
+  --primary-foreground: #0f1a14;
+  --secondary: #1e3a2a;
+  --secondary-foreground: #f8faf9;
+  --muted: #1e3a2a;
+  --muted-foreground: #9ca3af;
+  --accent: #34d399;
+  --accent-foreground: #0f1a14;
+  --destructive: #ef4444;
+  --destructive-foreground: #ef4444;
+  --border: #2d4a3a;
+  --input: #2d4a3a;
+  --ring: #10b981;
+  --chart-1: #10b981;
+  --chart-2: #34d399;
+  --chart-3: #6ee7b7;
+  --chart-4: #a7f3d0;
+  --chart-5: #d1fae5;
+  --sidebar: #0f1a14;
+  --sidebar-foreground: #f8faf9;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #0f1a14;
+  --sidebar-accent: #1e3a2a;
+  --sidebar-accent-foreground: #f8faf9;
+  --sidebar-border: #2d4a3a;
+  --sidebar-ring: #10b981;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-mono: var(--font-space-grotesk), 'Space Grotesk', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
