@@ -1,6 +1,3 @@
-"use client"
-
-import { useLanguage } from "@/lib/language-context"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
