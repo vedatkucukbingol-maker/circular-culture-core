@@ -1,5 +1,6 @@
-"use client" 
+"use client"
 
+import { useLanguage } from "@/lib/language-context"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
@@ -7,6 +8,8 @@ import { AuditToolSection } from "@/components/audit-tool-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
+  const { language } = useLanguage()
+
   return (
     <main>
       <Navbar />
