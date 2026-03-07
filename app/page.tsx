@@ -8,8 +8,6 @@ import { AuditToolSection } from "@/components/audit-tool-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
-  const { language } = useLanguage()
-
   return (
     <main>
       <Navbar />
