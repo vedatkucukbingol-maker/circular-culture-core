@@ -1,53 +1,29 @@
-import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+// Dil motorunu içeri aktarıyoruz
 import { LanguageProvider } from "@/lib/language-context";
 
-const _inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const _spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Circular Culture | Sustainability Consultancy',
-  description: 'Leading the Circular Revolution. Circular Culture helps organizations transition to sustainable, circular business models through expert consultancy and AI-powered tools.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
-}
-
-export const viewport: Viewport = {
-  themeColor: '#064e3b',
-  userScalable: true,
-}
+  title: "Circular Culture",
+  description: "Circular economy and cultural transformation",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={`${_inter.variable} ${_spaceGrotesk.variable} font-sans antialiased`}>
+      <body className={inter.className}>
+        {/* Tüm uygulamayı dil sarmalının içine alıyoruz */}
         <LanguageProvider>
-        {children}
-          </LanguageProvider>
-        <Analytics />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
-  )
+  );
 }
