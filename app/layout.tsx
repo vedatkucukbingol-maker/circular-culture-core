@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// Dil motorunu içeri aktarıyoruz
 import { LanguageProvider } from "@/lib/language-context";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* Tüm uygulamayı dil sarmalının içine alıyoruz */}
         <LanguageProvider>
           {children}
         </LanguageProvider>
