@@ -1,3 +1,6 @@
+"use client";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 "use client"
 
 import { useState } from "react"
