@@ -41,29 +41,20 @@ export const translations = {
   },
   audit: {
     badge: { TR: "Ücretsiz Denetim", EN: "Free Audit", DE: "Kostenloses Audit", ES: "Auditoría Gratuita" },
-    title: { TR: "Döngüsellik Skoru Hesaplayıcı", EN: "Circularity Score Calculator", DE: "Zirkularitäts-Rechner", ES: "Calculadora de Puntuación" },
-    description: { TR: "Üretim verilerinizi girerek döngüsellik seviyenizi anında ölçün.", EN: "Instantly measure your circularity level by entering your production data.", DE: "Messen Sie Ihr Zirkularitätsniveau sofort.", ES: "Mida su nivel de circularidad al instante." },
-    inputTitle: { TR: "Üretim Verileri", EN: "Production Data", DE: "Produktionsdaten", ES: "Datos de Producción" },
+    title: { TR: "Döngüsellik Skoru", EN: "Circularity Score", DE: "Zirkularitäts-Rechner", ES: "Puntuación de Circularidad" },
+    description: { TR: "Döngüsellik seviyenizi anında ölçün.", EN: "Instantly measure your circularity level.", DE: "Messen Sie Ihr Zirkularitätsniveau.", ES: "Mida su nivel de circularidad." },
+    inputTitle: { TR: "Veriler", EN: "Data", DE: "Daten", ES: "Datos" },
     calculate: { TR: "Hesapla", EN: "Calculate", DE: "Berechnen", ES: "Calcular" },
     reset: { TR: "Sıfırla", EN: "Reset", DE: "Zurücksetzen", ES: "Reiniciar" },
-    recycledInput: {
-      label: { TR: "Geri Dönüştürülmüş Girdi (%)", EN: "Recycled Input (%)", DE: "Recycling-Anteil (%)", ES: "Insumo Reciclado (%)" },
-      tooltip: { TR: "Hammadde içindeki geri dönüştürülmüş malzeme oranı.", EN: "Percentage of recycled materials in raw materials.", DE: "Anteil recycelter Materialien.", ES: "Porcentaje de materiales reciclados." }
-    },
-    totalWaste: {
-      label: { TR: "Toplam Atık Oranı (%)", EN: "Total Waste Rate (%)", DE: "Abfallquote (%)", ES: "Tasa de Residuos (%)" },
-      tooltip: { TR: "Üretim sürecinde oluşan atık yüzdesi.", EN: "Percentage of waste generated during production.", DE: "Anteil der Abfälle.", ES: "Porcentaje de residuos generados." }
-    },
-    recoveryRate: {
-      label: { TR: "Geri Kazanım Oranı (%)", EN: "Recovery Rate (%)", DE: "Verwertungsquote (%)", ES: "Tasa de Recuperación (%)" },
-      tooltip: { TR: "Atıkların ne kadarının geri dönüştürüldüğü.", EN: "Percentage of waste that is recycled.", DE: "Recyclinganteil des Abfalls.", ES: "Porcentaje de residuos reciclados." }
-    },
+    recycledInput: { label: { TR: "Geri Kazanılmış Girdi", EN: "Recycled Input", DE: "Recycling-Anteil", ES: "Insumo Reciclado" }, tooltip: { TR: "Hammadde içindeki geri kazanım oranı.", EN: "Recycled rate in raw materials.", DE: "Anteil recycelter Materialien.", ES: "Tasa de reciclado." } },
+    totalWaste: { label: { TR: "Toplam Atık", EN: "Total Waste", DE: "Abfallquote", ES: "Total de Residuos" }, tooltip: { TR: "Üretimdeki atık yüzdesi.", EN: "Percentage of waste.", DE: "Anteil der Abfälle.", ES: "Porcentaje de residuos." } },
+    recoveryRate: { label: { TR: "Kazanım Oranı", EN: "Recovery Rate", DE: "Verwertungsquote", ES: "Tasa de Recuperación" }, tooltip: { TR: "Atıkların geri dönüşüm oranı.", EN: "Waste recycling rate.", DE: "Recyclinganteil des Abfalls.", ES: "Tasa de reciclaje." } },
     results: {
-      title: { TR: "Denetim Sonuçları", EN: "Audit Results", DE: "Audit-Ergebnisse", ES: "Resultados del Audit" },
-      grade: { TR: "Döngüsellik Derecesi", EN: "Circularity Grade", DE: "Zirkularitäts-Grad", ES: "Grado de Circularidad" },
-      recommendations: { TR: "Kritik Öneriler", EN: "Critical Recommendations", DE: "Empfehlungen", ES: "Recomendaciones" },
-      emptyTitle: { TR: "Sonuç Hazır Değil", EN: "No Results Yet", DE: "Noch keine Ergebnisse", ES: "Sin resultados aún" },
-      emptySubtitle: { TR: "Hesaplamak için verileri girin.", EN: "Enter data to calculate.", DE: "Daten zur Berechnung eingeben.", ES: "Ingrese datos para calcular." }
+      title: { TR: "Sonuçlar", EN: "Results", DE: "Ergebnisse", ES: "Resultados" },
+      grade: { TR: "Derece", EN: "Grade", DE: "Grad", ES: "Grado" },
+      recommendations: { TR: "Öneriler", EN: "Recommendations", DE: "Empfehlungen", ES: "Recomendaciones" },
+      emptyTitle: { TR: "Veri Bekleniyor", EN: "Awaiting Data", DE: "Warten auf Daten", ES: "Esperando Datos" },
+      emptySubtitle: { TR: "Hesaplamak için değer girin.", EN: "Enter values to calculate.", DE: "Daten zur Berechnung eingeben.", ES: "Ingrese valores." }
     },
     grades: {
       excellent: { TR: "Mükemmel", EN: "Excellent", DE: "Exzellent", ES: "Excelente" },
@@ -72,10 +63,43 @@ export const translations = {
       critical: { TR: "Kritik", EN: "Critical", DE: "Kritisch", ES: "Crítico" }
     },
     recommendationTexts: {
-      recycledInput: { TR: "Hammadde tedariğinde geri dönüştürülmüş malzeme oranını artırın.", EN: "Increase the proportion of recycled materials in procurement.", DE: "Erhöhen Sie den Anteil an recycelten Materialien.", ES: "Aumente la proporción de materiales reciclados." },
-      totalWaste: { TR: "Yalın üretim teknikleriyle atık oluşumunu kaynağında engelleyin.", EN: "Prevent waste generation at source with lean production.", DE: "Vermeiden Sie Abfälle durch Lean Production.", ES: "Evite la generación de residuos con producción ajustada." },
-      recoveryRate: { TR: "Atık ayrıştırma ve geri kazanım altyapınızı güçlendirin.", EN: "Strengthen your waste sorting and recovery infrastructure.", DE: "Stärken Sie Ihre Abfallsortierung.", ES: "Fortalezca su infraestructura de clasificación." },
-      outstanding: { TR: "Sektör lideri performans! Döngüsel modelinizi ölçeklendirmeye odaklanın.", EN: "Industry-leading performance! Focus on scaling your model.", DE: "Branchenführend! Skalieren Sie Ihr Modell.", ES: "¡Rendimiento líder! Enfoquese en escalar su modelo." }
+      recycledInput: { TR: "Geri kazanılmış hammaddeyi artırın.", EN: "Increase recycled raw materials.", DE: "Mehr Recycling-Material.", ES: "Aumente insumos reciclados." },
+      totalWaste: { TR: "Atığı kaynağında engelleyin.", EN: "Prevent waste at source.", DE: "Abfall an der Quelle vermeiden.", ES: "Evite residuos en origen." },
+      recoveryRate: { TR: "Geri dönüşüm altyapısını kurun.", EN: "Setup recycling infrastructure.", DE: "Recycling-Infrastruktur aufbauen.", ES: "Instale infraestructura." },
+      outstanding: { TR: "Harika performans!", EN: "Outstanding performance!", DE: "Hervorragend!", ES: "¡Rendimiento excelente!" }
+    }
+  },
+  footer: {
+    description: {
+      TR: "Gelecek döngüseldir. Circular Culture, işletmenizi yarının ekonomisine hazırlayan kültürel ve teknik dönüşüm ortağınızdır.",
+      EN: "The future is circular. Circular Culture is your cultural and technical transformation partner for tomorrow's economy.",
+      DE: "Die Zukunft ist zirkulär. Ihr Partner für die Wirtschaft von morgen.",
+      ES: "El futuro es circular. Su socio de transformación para la economía del mañana."
+    },
+    columns: {
+      services: { TR: "Hizmetler", EN: "Services", DE: "Dienste", ES: "Servicios" },
+      company: { TR: "Kurumsal", EN: "Company", DE: "Unternehmen", ES: "Empresa" },
+      resources: { TR: "Kaynaklar", EN: "Resources", DE: "Ressourcen", ES: "Recursos" }
+    },
+    links: {
+      circularityAudits: { TR: "Döngüsellik Denetimi", EN: "Circularity Audits", DE: "Audits", ES: "Auditorías" },
+      strategyDevelopment: { TR: "Strateji Geliştirme", EN: "Strategy Development", DE: "Strategie", ES: "Estrategia" },
+      esgCompliance: { TR: "ESG Uyumluluk", EN: "ESG Compliance", DE: "ESG", ES: "ESG" },
+      greenSupplyChain: { TR: "Yeşil Tedarik", EN: "Green Supply Chain", DE: "Lieferkette", ES: "Cadena" },
+      aboutUs: { TR: "Hakkımızda", EN: "About Us", DE: "Über uns", ES: "Sobre Nosotros" },
+      ourTeam: { TR: "Ekibimiz", EN: "Our Team", DE: "Team", ES: "Equipo" },
+      careers: { TR: "Kariyer", EN: "Careers", DE: "Karriere", ES: "Carreras" },
+      blog: { TR: "Blog", EN: "Blog", DE: "Blog", ES: "Blog" },
+      caseStudies: { TR: "Vaka Analizleri", EN: "Case Studies", DE: "Fallstudien", ES: "Casos de Estudio" },
+      whitepapers: { TR: "Teknik Raporlar", EN: "Whitepapers", DE: "Whitepapers", ES: "Informes" },
+      webinars: { TR: "Webinerler", EN: "Webinars", DE: "Webinare", ES: "Webinars" },
+      newsletter: { TR: "Bülten", EN: "Newsletter", DE: "Newsletter", ES: "Boletín" }
+    },
+    legal: {
+      copyright: { TR: "© 2026 Circular Culture. Tüm hakları saklıdır.", EN: "© 2026 Circular Culture. All rights reserved.", DE: "© 2026 Alle Rechte vorbehalten.", ES: "© 2026 Todos los derechos reservados." },
+      privacy: { TR: "Gizlilik", EN: "Privacy", DE: "Datenschutz", ES: "Privacidad" },
+      terms: { TR: "Şartlar", EN: "Terms", DE: "AGB", ES: "Términos" },
+      cookies: { TR: "Çerezler", EN: "Cookies", DE: "Cookies", ES: "Cookies" }
     }
   }
 };
