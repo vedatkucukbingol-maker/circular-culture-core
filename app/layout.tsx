@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { LanguageProvider } from "@/lib/language-context";
+import { LanguageProvider } from "../lib/language-context"; // Burayı düzelttik: @/ yerine ../ kullandık
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Circular Culture",
-  description: "Circular economy and cultural transformation",
+  description: "Sustainability and Circular Economy Platform",
 };
 
 export default function RootLayout({
