@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "../lib/language-context"; // Burayı düzelttik: @/ yerine ../ kullandık
-
+import { LanguageProvider } from "../lib/language-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
