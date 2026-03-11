@@ -16,6 +16,7 @@
     "clsx": "latest",
     "tailwind-merge": "latest",
     "class-variance-authority": "latest"
+    "tw-animate-css": "latest"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1",
