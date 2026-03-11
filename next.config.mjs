@@ -1,13 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Eğer output: 'export' varsa bunu SİL. Vercel için gerek yok.
+  // Vercel'in build'i durdurmasını engelleyen kritik ayarlar
   typescript: {
-    // Build sırasında tip hataları olsa bile devam etmesini sağlar
     ignoreBuildErrors: true,
   },
   eslint: {
-    // Lint hataları build'i durdurmasın
     ignoreDuringBuilds: true,
+  },
+  // Güvenlik uyarılarını bypass etmek için bazen gerekebilir
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 };
 
