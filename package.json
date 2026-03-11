@@ -10,13 +10,12 @@
   },
   "dependencies": {
     "next": "15.1.7",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "lucide-react": "latest",
     "clsx": "latest",
     "tailwind-merge": "latest",
-    "class-variance-authority": "latest",
-    "tw-animate-css": "latest"
+    "class-variance-authority": "latest"
   },
   "devDependencies": {
     "typescript": "^5",
