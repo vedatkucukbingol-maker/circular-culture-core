@@ -1,168 +1,150 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Bot, Send, User, Sparkles } from "lucide-react"
-import { useLanguage } from "@/lib/language-context"
-import { translations, t } from "@/lib/translations"
+import { Bot, Send, User, Sparkles, X, MessageSquare, ChevronDown } from "lucide-react"
+import { useLanguage } from "../lib/language-context"
+import { translations, t } from "../lib/translations"
 
 interface Message {
-  role: "assistant" | "user"
+  role: "user" | "assistant"
   content: string
 }
 
-const quickResponses: Record<string, string> = {
-  "what is circular economy":
-    "The circular economy is a model of production and consumption that involves sharing, leasing, reusing, repairing, refurbishing, and recycling existing materials and products for as long as possible. It reduces waste, drives innovation, and creates new business opportunities.",
-  "how can you help":
-    "We offer comprehensive sustainability services: Circularity Audits to assess your current practices, Strategy Development for circular business models, Supply Chain Optimization to reduce waste, and ESG Reporting to meet compliance standards.",
-  "what services do you offer":
-    "Our core services include: 1) Circularity Audits, 2) Sustainable Strategy Development, 3) Supply Chain Optimization, 4) ESG & Compliance Reporting, and 5) Employee Sustainability Training. Try our free audit tool below!",
-  default:
-    "That's a great question! Our sustainability experts can provide detailed guidance on this topic. Would you like to schedule a consultation, or try our free Circularity Audit Tool below?",
-}
-
-function getResponse(input: string): string {
-  const lower = input.toLowerCase().trim()
-  for (const [key, value] of Object.entries(quickResponses)) {
-    if (key !== "default" && lower.includes(key)) return value
-  }
-  if (lower.includes("audit") || lower.includes("tool"))
-    return "Our Circularity Audit Tool helps you evaluate your organization's sustainability metrics. You can try it right here on this page - scroll down to the Audit section! It measures recycled input rates, total waste, and recovery rates."
-  if (lower.includes("waste") || lower.includes("recycle"))
-    return "Waste management and recycling are core pillars of the circular economy. We help organizations achieve an average 45% reduction in waste through systematic analysis and targeted strategies."
-  return quickResponses.default
-}
-
-export function AiChatWidget() {
-  const { lang } = useLanguage()
+export default function AIChatWidget() {
+  const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const { language } = useLanguage()
+  const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Update initial message when language changes
-  useEffect(() => {
-    setMessages([
-      {
-        role: "assistant",
-        content: t(translations.chat.greeting, lang),
-      },
-    ])
-  }, [lang])
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-    }
-  }, [messages, isTyping])
+    scrollToBottom()
+  }, [messages])
 
-  const handleSend = () => {
-    if (!input.trim() || isTyping) return
-    const userMessage: Message = { role: "user", content: input.trim() }
-    setMessages((prev) => [...prev, userMessage])
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!input.trim() || isLoading) return
+
+    const userMessage = input.trim()
     setInput("")
-    setIsTyping(true)
+    setMessages((prev) => [...prev, { role: "user", content: userMessage }])
+    setIsLoading(true)
 
-    setTimeout(() => {
-      const response = getResponse(userMessage.content)
-      setMessages((prev) => [...prev, { role: "assistant", content: response }])
-      setIsTyping(false)
-    }, 800 + Math.random() * 700)
+    try {
+      // Mock API response - Real implementation would connect to an AI service
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content:
+              language === "tr"
+                ? "Merhaba! Size sürdürülebilirlik ve döngüsel ekonomi konularında nasıl yardımcı olabilirim?"
+                : "Hello! How can I help you with sustainability and circular economy topics?",
+          },
+        ])
+        setIsLoading(false)
+      }, 1000)
+    } catch (error) {
+      console.error("Error:", error)
+      setIsLoading(false)
+    }
   }
 
   return (
-    <div className="w-full rounded-xl border border-white/10 bg-white/5 shadow-2xl shadow-black/20 backdrop-blur-2xl sm:rounded-2xl">
-      {/* Header */}
-      <div className="flex items-center gap-2.5 border-b border-white/10 px-4 py-3 sm:gap-3 sm:px-5 sm:py-4">
-        <div className="relative">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/20 sm:h-9 sm:w-9 sm:rounded-xl">
-            <Bot className="h-4 w-4 text-accent sm:h-5 sm:w-5" />
+    <div className="fixed bottom-6 right-6 z-50">
+      {isOpen ? (
+        <div className="bg-white rounded-2xl shadow-2xl w-[350px] sm:w-[400px] h-[500px] flex flex-col border border-gray-100 overflow-hidden animate-in slide-in-from-bottom-6 duration-300">
+          {/* Header */}
+          <div className="bg-emerald-600 p-4 text-white flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <div className="bg-white/20 p-1.5 rounded-lg">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-sm">Circular AI</h3>
+                <p className="text-xs text-emerald-100">{language === "tr" ? "Çevrimiçi" : "Online"}</p>
+              </div>
+            </div>
+            <button onClick={() => setIsOpen(false)} className="hover:bg-white/10 p-1 rounded-full transition-colors">
+              <X className="w-5 h-5" />
+            </button>
           </div>
-          <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-primary bg-accent sm:h-3 sm:w-3" aria-hidden="true" />
+
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            {messages.length === 0 && (
+              <div className="text-center py-8">
+                <div className="bg-emerald-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Bot className="w-6 h-6 text-emerald-600" />
+                </div>
+                <p className="text-sm text-gray-500 px-6">
+                  {language === "tr" 
+                    ? "Döngüsel ekonomi ve sürdürülebilirlik hakkında her şeyi sorabilirsiniz." 
+                    : "You can ask anything about circular economy and sustainability."}
+                </p>
+              </div>
+            )}
+            {messages.map((m, i) => (
+              <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+                <div
+                  className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                    m.role === "user" ? "bg-emerald-600 text-white rounded-tr-none" : "bg-gray-100 text-gray-800 rounded-tl-none"
+                  }`}
+                >
+                  {m.content}
+                </div>
+              </div>
+            ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-gray-100 p-3 rounded-2xl rounded-tl-none">
+                  <div className="flex gap-1">
+                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input */}
+          <form onSubmit={handleSubmit} className="p-4 border-t border-gray-100">
+            <div className="flex gap-2">
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={language === "tr" ? "Mesajınızı yazın..." : "Type your message..."}
+                className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-black"
+              />
+              <button
+                type="submit"
+                disabled={!input.trim() || isLoading}
+                className="bg-emerald-600 text-white p-2 rounded-xl hover:bg-emerald-700 disabled:opacity-50 disabled:hover:bg-emerald-600 transition-colors"
+              >
+                <Send className="w-5 h-5" />
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="min-w-0 flex-1">
-          <h3 className="truncate text-sm font-semibold text-primary-foreground">
-            {t(translations.chat.title, lang)}
-          </h3>
-          <p className="text-xs text-primary-foreground/50">
-            {t(translations.chat.status, lang)}
-          </p>
-        </div>
-        <Sparkles className="h-4 w-4 flex-shrink-0 text-accent/60" />
-      </div>
-
-      {/* Messages */}
-      <div ref={scrollRef} className="flex h-56 flex-col gap-3 overflow-y-auto px-4 py-3 sm:h-72 sm:px-5 sm:py-4">
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`flex gap-2 sm:gap-2.5 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
-          >
-            <div
-              className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md sm:h-7 sm:w-7 sm:rounded-lg ${
-                msg.role === "assistant"
-                  ? "bg-accent/20"
-                  : "bg-primary-foreground/10"
-              }`}
-            >
-              {msg.role === "assistant" ? (
-                <Bot className="h-3 w-3 text-accent sm:h-3.5 sm:w-3.5" />
-              ) : (
-                <User className="h-3 w-3 text-primary-foreground/70 sm:h-3.5 sm:w-3.5" />
-              )}
-            </div>
-            <div
-              className={`max-w-[85%] rounded-lg px-3 py-2 text-xs leading-relaxed sm:max-w-[80%] sm:rounded-xl sm:px-3.5 sm:py-2.5 sm:text-[13px] ${
-                msg.role === "assistant"
-                  ? "bg-white/10 text-primary-foreground/90"
-                  : "bg-accent/20 text-primary-foreground"
-              }`}
-            >
-              {msg.content}
-            </div>
-          </div>
-        ))}
-
-        {isTyping && (
-          <div className="flex gap-2 sm:gap-2.5">
-            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-accent/20 sm:h-7 sm:w-7 sm:rounded-lg">
-              <Bot className="h-3 w-3 text-accent sm:h-3.5 sm:w-3.5" />
-            </div>
-            <div className="flex items-center gap-1.5 rounded-lg bg-white/10 px-3 py-2.5 sm:rounded-xl sm:px-4 sm:py-3">
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-accent/60 [animation-delay:0ms]" />
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-accent/60 [animation-delay:150ms]" />
-              <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-accent/60 [animation-delay:300ms]" />
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Input */}
-      <div className="border-t border-white/10 px-3 py-2.5 sm:px-4 sm:py-3">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault()
-            handleSend()
-          }}
-          className="flex w-full items-center gap-2"
+      ) : (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:bg-emerald-700 transition-all hover:scale-110 active:scale-95 flex items-center gap-2 group"
         >
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={t(translations.chat.placeholder, lang)}
-            className="min-w-0 flex-1 rounded-lg border-0 bg-white/10 px-3 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:ring-1 focus:ring-accent/50 sm:rounded-xl sm:px-4 sm:py-2.5"
-          />
-          <button
-            type="submit"
-            disabled={!input.trim() || isTyping}
-            className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-all hover:shadow-lg hover:shadow-accent/25 disabled:opacity-40 sm:h-10 sm:w-10 sm:rounded-xl"
-            aria-label="Send message"
-          >
-            <Send className="h-4 w-4" />
-          </button>
-        </form>
-      </div>
+          <MessageSquare className="w-6 h-6" />
+          <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out font-medium">
+            {language === "tr" ? "AI Asistan" : "AI Assistant"}
+          </span>
+        </button>
+      )}
     </div>
   )
 }
