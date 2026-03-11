@@ -5,6 +5,7 @@ import { HeroSection } from "../components/hero-section"
 import { ServicesSection } from "../components/services-section"
 import { AuditToolSection } from "../components/audit-tool-section"
 import { Footer } from "../components/footer"
+import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
