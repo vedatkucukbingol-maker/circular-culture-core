@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* Burayı boş bırakabiliriz, varsayılan ayarlar yeterli olacaktır */
+  i18n: {
+    // Projende desteklediğin diller
+    locales: ['en', 'tr', 'de', 'es'],
+    // Varsayılan dil
+    defaultLocale: 'tr',
+  },
+  // Vercel'de bazen gerekebilen çıktı ayarı
+  output: 'standalone', 
 };
 
 export default nextConfig;
