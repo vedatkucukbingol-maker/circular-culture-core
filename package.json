@@ -16,12 +16,12 @@
     "clsx": "latest",
     "tailwind-merge": "latest",
     "class-variance-authority": "latest",
-    "tw-animate-css": "latest"
-  },
-  "devDependencies": {
+    "tw-animate-css": "latest",
     "tailwindcss": "^3.4.1",
     "postcss": "^8",
-    "autoprefixer": "^10",
+    "autoprefixer": "^10"
+  },
+  "devDependencies": {
     "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
