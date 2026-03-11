@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* Buraya varsa özel uygulama ayarlarını ekleyebilirsin */
-  /* Örneğin: images: { domains: ['example.com'] } */
+  // Tailwind v4 yapılandırması Next.js 15 ile bu şekilde en stabil çalışır
 };
 
 export default nextConfig;
