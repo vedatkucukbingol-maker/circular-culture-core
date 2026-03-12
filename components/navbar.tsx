@@ -1,18 +1,17 @@
 "use client"
 
 import { useState } from "react"
-import { Recycle, Menu, X, ChevronDown } from "lucide-react"
-import { useLanguage } from "../lib/language-context"
-import { translations, t, Language } from "../lib/translations"
+import { Recycle, Menu, X, Globe } from "lucide-react"
+import { useLanguage } from "@/context/LanguageContext"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const { language, setLanguage } = useLanguage() as { language: Language; setLanguage: (lang: Language) => void }
+  const { lang, setLang, t } = useLanguage()
 
   const navItems = [
-    { name: language === "tr" ? "Hizmetler" : "Services", href: "#services" },
-    { name: language === "tr" ? "Analiz Aracı" : "Audit Tool", href: "#audit-tool" },
-    { name: language === "tr" ? "Hakkımızda" : "About Us", href: "#about" },
+    { name: t.navServices, href: "#services" },
+    { name: t.navTool, href: "#audit-tool" },
+    { name: t.navAbout, href: "#about" },
   ]
 
   return (
@@ -34,18 +33,16 @@ export default function Navbar() {
               </a>
             ))}
             
-            <div className="flex items-center gap-2 border-l pl-8">
-              <button 
-                onClick={() => setLanguage(language === "tr" ? "en" : "tr")}
-                className="text-sm font-bold text-gray-700 hover:text-emerald-600 uppercase"
-              >
-                {language === "tr" ? "EN" : "TR"}
-              </button>
+            {/* 3 Dil Seçici */}
+            <div className="flex items-center gap-3 border-l pl-8 text-xs font-bold text-gray-500">
+              <button onClick={() => setLang('tr')} className={`${lang === 'tr' ? 'text-emerald-600 underline' : 'hover:text-emerald-600'}`}>TR</button>
+              <button onClick={() => setLang('en')} className={`${lang === 'en' ? 'text-emerald-600 underline' : 'hover:text-emerald-600'}`}>EN</button>
+              <button onClick={() => setLang('de')} className={`${lang === 'de' ? 'text-emerald-600 underline' : 'hover:text-emerald-600'}`}>DE</button>
             </div>
           </div>
 
           {/* Mobile Button */}
-          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+          <button className="md:hidden p-2 text-gray-600" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -53,12 +50,17 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 p-4 space-y-4 shadow-xl">
+        <div className="md:hidden bg-white border-t border-gray-100 p-4 space-y-4 shadow-xl text-center">
           {navItems.map((item) => (
             <a key={item.name} href={item.href} className="block text-base font-medium text-gray-600" onClick={() => setIsOpen(false)}>
               {item.name}
             </a>
           ))}
+          <div className="flex justify-center gap-6 pt-4 border-t">
+            <button onClick={() => { setLang('tr'); setIsOpen(false); }} className={lang === 'tr' ? 'text-emerald-600 font-bold' : ''}>TR</button>
+            <button onClick={() => { setLang('en'); setIsOpen(false); }} className={lang === 'en' ? 'text-emerald-600 font-bold' : ''}>EN</button>
+            <button onClick={() => { setLang('de'); setIsOpen(false); }} className={lang === 'de' ? 'text-emerald-600 font-bold' : ''}>DE</button>
+          </div>
         </div>
       )}
     </nav>
