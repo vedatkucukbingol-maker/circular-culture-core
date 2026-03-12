@@ -1,6 +1,23 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { LanguageProvider } from "../lib/language-context";
+import { LanguageProvider } from '@/context/LanguageContext';
+// ... diğer importların kalsın
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="tr">
+      <body>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
+    </html>
+  );
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
