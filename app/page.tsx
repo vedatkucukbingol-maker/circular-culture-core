@@ -2,54 +2,60 @@
 
 import { useLanguage } from "../context/LanguageContext";
 import Navbar from "../components/Navbar";
-import { Recycle, BarChart3, FileText, Lightbulb, ArrowRight } from "lucide-react";
 
 export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-[#030c0a] text-white">
+    <div className="min-h-screen bg-[#052c1e] text-white font-sans selection:bg-emerald-500/30">
       <Navbar />
-      <main>
-        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4">
-          <div className="container mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full text-emerald-400 text-xs font-bold mb-8">
-              {t.visionBadge}
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 italic bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
-              {t.heroTitle}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
-              {t.heroSub}
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <button className="bg-emerald-600 text-white px-10 py-4 rounded-full font-bold hover:bg-emerald-500 transition-all flex items-center justify-center gap-2 group">
-                {t.ctaStart}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          </div>
-        </section>
+      
+      <main className="relative flex flex-col items-center justify-center pt-32 pb-20 px-4 text-center">
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000')] bg-cover bg-center opacity-20 -z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#052c1e]/50 to-[#052c1e] -z-10"></div>
 
-        <section id="services" className="py-24 bg-white/5">
-          <div className="container mx-auto px-4 grid md:grid-cols-3 gap-8">
-            <div className="bg-white/5 p-8 rounded-3xl border border-white/10">
-              <Lightbulb className="text-emerald-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t.service1Title}</h3>
-              <p className="text-gray-400">{t.service1Desc}</p>
+        <div className="container mx-auto max-w-5xl">
+          <div className="inline-block px-4 py-1.5 mb-8 border border-emerald-500/30 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium tracking-widest uppercase">
+             Sustainability Consultancy
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1]">
+            {t.heroTitle.split(' ').map((word: string, i: number) => 
+              word === "Revolution" || word === "Devrime" || word === "Revolution" ? 
+              <span key={i} className="underline decoration-emerald-500 decoration-4 underline-offset-8"> {word}</span> : " " + word
+            )}
+          </h1>
+
+          <p className="text-lg md:text-xl text-emerald-100/70 mb-12 max-w-3xl mx-auto leading-relaxed">
+            {t.heroSub}
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-20">
+            <button className="bg-[#10b981] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#059669] transition-all flex items-center justify-center gap-2">
+              {t.tryAudit} →
+            </button>
+            <button className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all">
+              {t.learnMore}
+            </button>
+          </div>
+
+          {/* Stats Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12 border-t border-white/10 max-w-4xl mx-auto text-left">
+            <div>
+              <div className="text-3xl font-bold text-white mb-1">200+</div>
+              <div className="text-sm text-emerald-100/50 uppercase tracking-wider">{t.projects}</div>
             </div>
-            <div className="bg-white/5 p-8 rounded-3xl border border-white/10">
-              <BarChart3 className="text-emerald-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t.service2Title}</h3>
-              <p className="text-gray-400">{t.service2Desc}</p>
+            <div>
+              <div className="text-3xl font-bold text-white mb-1">45%</div>
+              <div className="text-sm text-emerald-100/50 uppercase tracking-wider">{t.wasteRed}</div>
             </div>
-            <div className="bg-white/5 p-8 rounded-3xl border border-white/10">
-              <FileText className="text-emerald-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t.service3Title}</h3>
-              <p className="text-gray-400">{t.service3Desc}</p>
+            <div>
+              <div className="text-3xl font-bold text-white mb-1">98%</div>
+              <div className="text-sm text-emerald-100/50 uppercase tracking-wider">{t.retention}</div>
             </div>
           </div>
-        </section>
+        </div>
       </main>
     </div>
   );
