@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  // Hiçbir ayar ekleme, Vercel varsayılanı kullansın
-};
+const nextConfig = {};
 
 export default nextConfig;
