@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  output: 'standalone', // Vercel için daha stabil bir yapı sunar
+  // Sadece boş bırakıyoruz, hatalı anahtarları sildik
 };
 
 export default nextConfig;
