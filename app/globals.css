@@ -10,16 +10,15 @@
   --foreground: #ffffff;
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-}
-
-/* Ekran görüntüsündeki devasa yazı sorununu çözer */
-h1 {
-  line-height: 1.1;
-  letter-spacing: -0.02em;
 }
