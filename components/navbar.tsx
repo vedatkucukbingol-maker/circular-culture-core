@@ -1,59 +1,39 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Recycle, Menu, X } from "lucide-react"
-import { useLanguage } from "../context/LanguageContext"
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const { lang, setLang, t } = useLanguage()
-
-  const navItems = [
-    { name: t.navServices, href: "#services" },
-    { name: t.navTool, href: "#audit-tool" },
-    { name: t.navAbout, href: "#about" },
-  ]
+  const { language, setLanguage, t } = useLanguage();
 
   return (
-    <nav className="fixed w-full bg-[#030c0a]/90 backdrop-blur-md z-50 border-b border-white/10">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center gap-2">
-            <div className="bg-emerald-600 p-1.5 rounded-lg">
-              <Recycle className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold text-white tracking-tight">Circular Culture</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#052c1e]/80 backdrop-blur-md border-b border-white/5">
+      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-emerald-500 rounded-lg"></div>
+          <span className="font-bold text-xl tracking-tighter">Circular Culture</span>
+        </div>
+
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-emerald-100/60">
+            <a href="#" className="hover:text-emerald-400 transition-colors">{t.navServices}</a>
+            <a href="#" className="hover:text-emerald-400 transition-colors">{t.navAbout}</a>
           </div>
 
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-medium text-gray-300 hover:text-emerald-400">
-                {item.name}
-              </a>
+          <div className="flex bg-black/20 p-1 rounded-lg border border-white/10">
+            {['tr', 'en', 'de'].map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLanguage(lang as any)}
+                className={`px-3 py-1 rounded-md text-xs font-bold uppercase transition-all ${
+                  language === lang ? "bg-emerald-500 text-black" : "text-white/50 hover:text-white"
+                }`}
+              >
+                {lang}
+              </button>
             ))}
-            <div className="flex items-center gap-3 border-l border-white/20 pl-6">
-              {['tr', 'en', 'de'].map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l as any)}
-                  className={`text-xs font-bold uppercase ${lang === l ? 'text-emerald-400' : 'text-gray-500 hover:text-white'}`}
-                >
-                  {l}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="md:hidden flex items-center gap-4">
-            <div className="flex gap-2 bg-white/5 p-1 rounded-lg border border-white/10">
-               {['tr', 'en', 'de'].map((l) => (
-                <button key={l} onClick={() => setLang(l as any)} className={`text-[10px] p-1 font-bold uppercase ${lang === l ? 'text-emerald-400' : 'text-gray-500'}`}>{l}</button>
-              ))}
-            </div>
-            <button className="text-white" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X /> : <Menu />}</button>
           </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }
