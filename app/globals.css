@@ -1,12 +1,5 @@
 @import "tailwindcss";
 
-/* v4 Tema Yapılandırması */
-@theme {
-  --color-brand-green: #052c1e;
-  --color-emerald-accent: #10b981;
-}
-
-/* Global Stiller */
 @layer base {
   :root {
     --background: #052c1e;
@@ -17,12 +10,12 @@
     background-color: #052c1e !important;
     color: white;
     margin: 0;
-    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-family: sans-serif;
   }
 }
 
-/* Ekran görüntüsündeki yazı taşmalarını çözen özel ayarlar */
+/* Ekran görüntüsündeki devasa yazı sorununu çözen ayar */
 h1 {
-  letter-spacing: -0.04em;
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
