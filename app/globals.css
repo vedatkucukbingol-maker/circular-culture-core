@@ -1,24 +1,28 @@
 @import "tailwindcss";
 
+/* v4 Tema Yapılandırması */
 @theme {
-  --color-background: #052c1e;
-  --color-foreground: #ffffff;
+  --color-brand-green: #052c1e;
+  --color-emerald-accent: #10b981;
 }
 
-:root {
-  --background: #052c1e;
-  --foreground: #ffffff;
+/* Global Stiller */
+@layer base {
+  :root {
+    --background: #052c1e;
+    --foreground: #ffffff;
+  }
+
+  body {
+    background-color: #052c1e !important;
+    color: white;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+/* Ekran görüntüsündeki yazı taşmalarını çözen özel ayarlar */
+h1 {
+  letter-spacing: -0.04em;
+  line-height: 1.1;
 }
