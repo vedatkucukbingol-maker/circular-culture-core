@@ -1,8 +1,26 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand: #052c1e;
+  --color-accent: #10b981;
+}
+
 @layer base {
+  :root {
+    --background: #052c1e;
+    --foreground: #ffffff;
+  }
+
   body {
     background-color: #052c1e !important;
     color: white !important;
+    margin: 0;
+    font-family: sans-serif;
   }
+}
+
+/* Yazıların birbirine girmesini engeller */
+h1 {
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
