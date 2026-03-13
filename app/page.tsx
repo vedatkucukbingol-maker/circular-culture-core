@@ -1,8 +1,7 @@
 "use client";
 
-import { useLanguage } from "../context/LanguageContext";
-import Navbar from "../components/Navbar";
-
+import { useLanguage } from "@/context/LanguageContext"; // '../' yerine '@/ ' dene
+import Navbar from "@/components/Navbar";               // '../' yerine '@/ ' dene
 export default function Home() {
   const { t } = useLanguage();
 
