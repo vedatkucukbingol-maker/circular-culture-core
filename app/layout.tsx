@@ -1,12 +1,13 @@
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "../context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Circular Culture",
-  description: "Sustainability and Circular Economy Platform",
+  description: "Leading the Circular Revolution",
 };
 
 export default function RootLayout({
@@ -15,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr">
+    <html lang="en">
       <body className={inter.className}>
         <LanguageProvider>
           {children}
