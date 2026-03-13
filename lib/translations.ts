@@ -1,53 +1,35 @@
 export const translations = {
   tr: {
     heroTitle: "Döngüsel Devrime Öncülük Edin",
-    heroSub: "İşletmenizi sürdürülebilir modellemelerle dönüştürüyor, atıkları azaltarak verimliliği maksimize ediyoruz.",
-    tryAudit: "Analiz Aracını Dene",
+    heroSub: "Sürdürülebilir bir gelecek için organizasyonları dönüştürüyoruz.",
+    tryAudit: "Denetime Başla",
     learnMore: "Daha Fazla Bilgi",
     projects: "Tamamlanan Proje",
-    wasteRed: "Ort. Atık Azaltımı",
+    wasteRed: "Atık Azaltma",
     retention: "Müşteri Bağlılığı",
     navServices: "Hizmetler",
-    navAudit: "Analiz Aracı",
-    navAbout: "Hakkımızda",
-    navContact: "İletişim",
-    getStarted: "Hemen Başla",
-    assistantName: "CircularAI Asistanı",
-    assistantStatus: "Her zaman çevrimiçi",
-    assistantMsg: "Merhaba! Ben Circular Culture yapay zeka asistanıyım. Sürdürülebilirlik veya döngüsel ekonomi hakkında bana her şeyi sorabilirsin."
+    navAbout: "Hakkımızda"
   },
   en: {
     heroTitle: "Leading the Circular Revolution",
-    heroSub: "We help forward-thinking organizations transition to circular business models, reducing waste and maximizing value.",
+    heroSub: "Transforming organizations for a sustainable future.",
     tryAudit: "Try Our Audit Tool",
     learnMore: "Learn More",
     projects: "Projects Delivered",
     wasteRed: "Avg. Waste Reduction",
     retention: "Client Retention",
     navServices: "Services",
-    navAudit: "Audit Tool",
-    navAbout: "About",
-    navContact: "Contact",
-    getStarted: "Get Started",
-    assistantName: "CircularAI Assistant",
-    assistantStatus: "Always online",
-    assistantMsg: "Hello! I'm your Circular Culture AI assistant. Ask me anything about sustainability or circular economy."
+    navAbout: "About"
   },
   de: {
-    heroTitle: "Führend in der zirkulären Revolution",
-    heroSub: "Wir unterstützen Organisationen beim Übergang zu zirkulären Geschäftsmodellen, um Abfall zu reduzieren und den Wert zu maximieren.",
+    heroTitle: "Führend in der Kreislaufrevolution",
+    heroSub: "Transformation von Organisationen für eine nachhaltige Zukunft.",
     tryAudit: "Audit-Tool testen",
     learnMore: "Mehr erfahren",
-    projects: "Projekte abgeschlossen",
-    wasteRed: "Durchschn. Abfallreduzierung",
+    projects: "Abgeschlossene Projekte",
+    wasteRed: "Abfallreduzierung",
     retention: "Kundenbindung",
     navServices: "Dienstleistungen",
-    navAudit: "Audit-Tool",
-    navAbout: "Über uns",
-    navContact: "Kontakt",
-    getStarted: "Loslegen",
-    assistantName: "CircularAI Assistent",
-    assistantStatus: "Immer online",
-    assistantMsg: "Hallo! Ich bin dein Circular Culture KI-Assistent. Frag mich alles über Nachhaltigkeit oder Kreislaufwirtschaft."
+    navAbout: "Über uns"
   }
 };
