@@ -6,21 +6,32 @@ export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-[#052c1e] text-white">
+    <div className="min-h-screen bg-[#052c1e] text-white overflow-hidden">
       <Navbar />
-      <main className="relative flex flex-col items-center justify-center pt-40 pb-32 px-4 text-center">
-        <div className="container mx-auto max-w-5xl">
-          <h1 className="text-5xl md:text-8xl font-bold mb-8 leading-tight tracking-tight">
+      
+      <main className="relative flex flex-col items-center justify-center min-h-screen px-6 pt-20 pb-10 text-center">
+        {/* Arka plan efekti */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-900/20 via-transparent to-transparent -z-10"></div>
+
+        <div className="max-w-4xl mx-auto">
+          <div className="inline-block px-3 py-1 mb-6 border border-emerald-500/20 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold tracking-widest uppercase">
+            Sustainability Consultancy
+          </div>
+
+          {/* Yazı boyutu burada dengelendi */}
+          <h1 className="text-4xl md:text-7xl font-extrabold mb-6 tracking-tight">
             {t.heroTitle}
           </h1>
-          <p className="text-lg md:text-xl text-emerald-100/60 mb-12 max-w-2xl mx-auto">
+
+          <p className="text-base md:text-lg text-emerald-100/60 mb-10 max-w-xl mx-auto leading-relaxed">
             {t.heroSub}
           </p>
-          <div className="flex justify-center gap-4 mb-24">
-            <button className="bg-emerald-500 text-black px-10 py-4 rounded-xl font-bold text-lg hover:bg-emerald-400">
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <button className="bg-emerald-500 text-[#052c1e] px-8 py-3.5 rounded-xl font-bold hover:bg-emerald-400 transition-all cursor-pointer">
               {t.tryAudit}
             </button>
-            <button className="border border-white/20 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/5">
+            <button className="border border-white/10 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/5 transition-all cursor-pointer">
               {t.learnMore}
             </button>
           </div>
