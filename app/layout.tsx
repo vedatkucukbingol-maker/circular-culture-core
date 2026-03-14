@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Circular Culture",
-  description: "Döngüsel Dönüşüm Platformu",
+  description: "Sürdürülebilir Dönüşüm Platformu",
 };
 
 export default function RootLayout({
