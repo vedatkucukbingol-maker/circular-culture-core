@@ -1,38 +1,30 @@
-"use client";
-import { useLanguage } from "../context/LanguageContext";
-import Navbar from "../components/Navbar";
+import Link from 'next/link';
 
 export default function Home() {
-  const { t } = useLanguage();
-
   return (
-    // 'flex flex-col items-center justify-center' her şeyi tam ortaya toplar
-    <div className="min-h-screen flex flex-col bg-[#052c1e]">
-      <Navbar />
-      
-      <main className="flex-grow flex flex-col items-center justify-center text-center px-6">
-        <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          {/* Rozet */}
-          <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-8">
-            {t.heroSub}
-          </span>
+    <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 text-center">
+      <div className="max-w-3xl space-y-8">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+          CIRCULARCULTURE
+        </h1>
+        
+        <p className="text-xl md:text-2xl text-gray-400">
+          Sürdürülebilir bir gelecek için organizasyonları dönüştürüyoruz.
+        </p>
 
-          {/* v0 Tarzı Başlık */}
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
-            {t.heroTitle}
-          </h1>
+        <h2 className="text-2xl font-semibold text-emerald-500 uppercase tracking-widest">
+          Döngüsel Devrime Öncülük Edin
+        </h2>
 
-          {/* Butonlar */}
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <button className="px-8 py-4 bg-emerald-500 text-[#052c1e] rounded-2xl font-bold text-lg hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20">
-              {t.tryAudit}
-            </button>
-            <button className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-bold text-lg hover:bg-white/10 transition-all">
-              {t.learnMore}
-            </button>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+          <Link href="/denetim" className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 rounded-full font-bold transition-all transform hover:scale-105">
+            Denetime Başla
+          </Link>
+          <Link href="/bilgi" className="px-8 py-4 border border-white/20 hover:bg-white/10 rounded-full font-bold transition-all">
+            Daha Fazla Bilgi
+          </Link>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
