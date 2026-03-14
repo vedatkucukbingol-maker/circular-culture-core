@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Circular Culture",
-  description: "Sürdürülebilir Dönüşüm Platformu",
+  description: "Döngüsel Dönüşüm Platformu",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className="bg-black text-white antialiased">
+      <body style={{ backgroundColor: 'black', color: 'white', margin: 0, fontFamily: 'sans-serif' }}>
         {children}
       </body>
     </html>
