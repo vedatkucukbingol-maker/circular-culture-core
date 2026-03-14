@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Sadece temel ayarlar kalsın
+  reactStrictMode: true,
+  // Tailwind v4 ve modern Next.js yapılandırması için en sade hal
 };
 
 export default nextConfig;
