@@ -1,30 +1,29 @@
-"use client";
-import React, { createContext, useContext, useState } from "react";
-import { translations } from "../lib/translations";
+"use client"
 
-type Language = "tr" | "en" | "de";
+import { createContext, useContext, useState, ReactNode } from "react"
+import { Language } from "./translations"
 
 interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  t: typeof translations.en;
+  lang: Language
+  setLang: (lang: Language) => void
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<Language>("tr");
-  const t = translations[language];
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [lang, setLang] = useState<Language>("EN")
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ lang, setLang }}>
       {children}
     </LanguageContext.Provider>
-  );
-};
+  )
+}
 
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) throw new Error("LanguageProvider bulunamadı!");
-  return context;
-};
+export function useLanguage() {
+  const context = useContext(LanguageContext)
+  if (!context) {
+    throw new Error("useLanguage must be used within a LanguageProvider")
+  }
+  return context
+}
