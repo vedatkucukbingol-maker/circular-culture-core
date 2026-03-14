@@ -1,10 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Navbar from "../components/Navbar";
 
 export const metadata: Metadata = {
   title: "Circular Culture",
-  description: "Sustainability Platform",
+  description: "Döngüsel Dönüşüm Platformu",
 };
 
 export default function RootLayout({
@@ -14,8 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className="bg-black antialiased">
-        <Navbar />
+      <body className="bg-black text-white antialiased">
         {children}
       </body>
     </html>
