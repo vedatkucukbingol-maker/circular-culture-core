@@ -1,4 +1,3 @@
-import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body style={{ backgroundColor: 'black', color: 'white', margin: 0, fontFamily: 'sans-serif' }}>
+      <body style={{ backgroundColor: 'black', color: 'white', margin: 0 }}>
         {children}
       </body>
     </html>
