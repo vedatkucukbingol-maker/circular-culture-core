@@ -7,24 +7,22 @@ export default function Home() {
       alignItems: 'center', 
       justifyContent: 'center', 
       textAlign: 'center',
-      padding: '20px'
+      backgroundColor: 'black'
     }}>
-      <h1 style={{ fontSize: '4rem', color: '#10b981', margin: '0' }}>CIRCULARCULTURE</h1>
-      <p style={{ fontSize: '1.5rem', color: '#888' }}>Sürdürülebilir bir gelecek için organizasyonları dönüştürüyoruz.</p>
-      <div style={{ marginTop: '30px' }}>
-        <button style={{ 
-          backgroundColor: '#059669', 
-          color: 'white', 
-          border: 'none', 
-          padding: '15px 30px', 
-          borderRadius: '50px', 
-          fontSize: '1rem', 
-          fontWeight: 'bold',
-          cursor: 'pointer'
-        }}>
-          Denetime Başla
-        </button>
-      </div>
+      <h1 style={{ fontSize: '4rem', color: '#10b981', fontWeight: 'bold' }}>CIRCULARCULTURE</h1>
+      <p style={{ fontSize: '1.2rem', color: '#888' }}>Sürdürülebilir bir gelecek için organizasyonları dönüştürüyoruz.</p>
+      <button style={{ 
+        marginTop: '20px',
+        backgroundColor: '#059669', 
+        color: 'white', 
+        border: 'none', 
+        padding: '12px 24px', 
+        borderRadius: '30px',
+        fontWeight: 'bold',
+        cursor: 'pointer'
+      }}>
+        Denetime Başla
+      </button>
     </main>
   );
 }
