@@ -73,6 +73,54 @@ export default function Home() {
           </div>
         ))}
       </div>
+      {/* FOOTER BÖLÜMÜ */}
+      <footer style={{ 
+        marginTop: '100px', 
+        width: '100%', 
+        maxWidth: '1100px', 
+        padding: '40px 20px', 
+        borderTop: '1px solid rgba(255,255,255,0.1)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '20px'
+      }}>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          width: '100%', 
+          flexWrap: 'wrap', 
+          gap: '30px',
+          textAlign: 'left' 
+        }}>
+          <div>
+            <h4 style={{ color: '#10b981', margin: '0 0 10px 0' }}>Circular Culture</h4>
+            <p style={{ color: '#666', fontSize: '0.85rem', maxWidth: '250px' }}>
+              Geleceği döngüsel ekonomi ile şekillendiren danışmanlık platformu.
+            </p>
+          </div>
+          
+          <div style={{ display: 'flex', gap: '40px' }}>
+            <div>
+              <h5 style={{ color: 'white', margin: '0 0 10px 0', fontSize: '0.9rem' }}>İletişim</h5>
+              <p style={{ color: '#666', fontSize: '0.85rem', margin: '5px 0' }}>info@circularculture.com.tr</p>
+              <p style={{ color: '#666', fontSize: '0.85rem', margin: '5px 0' }}>İstanbul, Türkiye</p>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ 
+          marginTop: '40px', 
+          color: '#444', 
+          fontSize: '0.75rem', 
+          width: '100%', 
+          textAlign: 'center',
+          borderTop: '1px solid rgba(255,255,255,0.05)',
+          paddingTop: '20px'
+        }}>
+          © 2026 Circular Culture. Tüm hakları saklıdır.
+        </div>
+      </footer>
     </main>
   );
 }
