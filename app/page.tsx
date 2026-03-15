@@ -1,8 +1,8 @@
-'use client'; // Etkileşim (dil seçimi) için bu satır en üstte olmalı
+'use client';
 
 import React, { useState } from 'react';
 
-// 1. DİL SÖZLÜĞÜ (Sayfanın en üstünde tanımlıyoruz)
+// Çeviri Sözlüğü
 const translations = {
   TR: {
     heroTitle: "CIRCULARCULTURE",
@@ -16,7 +16,8 @@ const translations = {
     s3Title: "Yeşil Dönüşüm",
     s3Desc: "Karbon ayak izinizi azaltacak stratejik yol haritaları çiziyoruz.",
     footerText: "Geleceği döngüsel ekonomi ile şekillendiren danışmanlık platformu.",
-    contact: "İletişim"
+    contact: "İletişim",
+    about: "Hakkımızda"
   },
   EN: {
     heroTitle: "CIRCULARCULTURE",
@@ -30,7 +31,8 @@ const translations = {
     s3Title: "Green Transformation",
     s3Desc: "We draw strategic roadmaps to reduce your carbon footprint.",
     footerText: "Consultancy platform shaping the future with circular economy.",
-    contact: "Contact"
+    contact: "Contact",
+    about: "About Us"
   },
   DE: {
     heroTitle: "CIRCULARCULTURE",
@@ -44,7 +46,8 @@ const translations = {
     s3Title: "Grüne Transformation",
     s3Desc: "Strategische Roadmaps zur Reduzierung Ihres CO2-Fußabdrucks.",
     footerText: "Beratungsplattform, die die Zukunft zirkulär gestaltet.",
-    contact: "Kontakt"
+    contact: "Kontakt",
+    about: "Über Uns"
   },
   ES: {
     heroTitle: "CIRCULARCULTURE",
@@ -58,53 +61,47 @@ const translations = {
     s3Title: "Transformación Verde",
     s3Desc: "Diseñamos hojas de ruta para reducir su huella de carbono.",
     footerText: "Plataforma de consultoría que define el futuro circular.",
-    contact: "Contacto"
+    contact: "Contacto",
+    about: "Nosotros"
   }
 };
 
 export default function Home() {
-  // 2. DİL DURUMU (State)
   const [lang, setLang] = useState('TR');
-  
-  // @ts-ignore - Basitlik için tip kontrolünü geçiyoruz
+  // @ts-ignore
   const t = translations[lang];
 
   return (
     <>
-      {/* 3. DİL SEÇİCİ (NAVBAR) */}
-      <nav style={{
-        position: 'fixed', 
-        top: '20px', 
-        right: '20px', 
-        zIndex: 100,
-        display: 'flex', 
-        gap: '8px', 
-        background: 'rgba(0,0,0,0.5)',
-        padding: '6px', 
-        borderRadius: '50px', 
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255,255,255,0.1)'
+      {/* ÜST DİL SEÇİCİ - Navbar'ın üzerine veya yanına oturur */}
+      <div style={{
+        position: 'fixed',
+        top: '25px',
+        right: '20px',
+        zIndex: 9999, // En üstte durması için
+        display: 'flex',
+        gap: '5px'
       }}>
         {['TR', 'EN', 'DE', 'ES'].map((l) => (
           <button 
             key={l}
             onClick={() => setLang(l)}
             style={{
-              background: lang === l ? '#10b981' : 'transparent',
-              color: 'white', 
-              border: 'none', 
+              background: lang === l ? '#10b981' : 'rgba(255,255,255,0.05)',
+              color: 'white',
+              border: '1px solid rgba(255,255,255,0.1)',
               cursor: 'pointer',
-              padding: '6px 14px', 
-              borderRadius: '20px', 
+              padding: '4px 10px',
+              borderRadius: '6px',
+              fontSize: '11px',
               fontWeight: 'bold',
-              fontSize: '0.8rem',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.2s'
             }}
           >
             {l}
           </button>
         ))}
-      </nav>
+      </div>
 
       <main style={{ 
         minHeight: '100vh', 
@@ -112,59 +109,65 @@ export default function Home() {
         flexDirection: 'column', 
         alignItems: 'center', 
         textAlign: 'center', 
-        padding: '140px 20px 60px 20px',
+        padding: '160px 20px 80px 20px',
         backgroundColor: 'black',
         background: 'radial-gradient(circle at center, #052c1e 0%, black 100%)'
       }}>
         {/* HERO */}
         <div style={{ maxWidth: '800px', marginBottom: '80px' }}>
           <h1 style={{ 
-            fontSize: 'clamp(2.5rem, 8vw, 5rem)', 
+            fontSize: 'clamp(2.2rem, 8vw, 5rem)', 
             color: '#10b981', 
             fontWeight: '900',
-            textTransform: 'uppercase' 
+            letterSpacing: '-1px'
           }}>
             {t.heroTitle}
           </h1>
-          <p style={{ fontSize: '1.2rem', color: '#a1a1aa', marginTop: '20px', lineHeight: '1.6' }}>
+          <p style={{ fontSize: '1.1rem', color: '#a1a1aa', marginTop: '20px', maxWidth: '600px', marginInline: 'auto' }}>
             {t.heroSub}
           </p>
           <div style={{ marginTop: '40px', display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button style={{ backgroundColor: '#10b981', color: 'white', border: 'none', padding: '16px 36px', borderRadius: '100px', fontWeight: 'bold', cursor: 'pointer' }}>
+            <button style={{ backgroundColor: '#10b981', color: 'white', border: 'none', padding: '14px 30px', borderRadius: '50px', fontWeight: 'bold', cursor: 'pointer' }}>
               {t.btnAudit}
             </button>
-            <button style={{ background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.2)', padding: '16px 36px', borderRadius: '100px', fontWeight: 'bold', cursor: 'pointer' }}>
+            <button style={{ background: 'transparent', color: 'white', border: '1px solid #333', padding: '14px 30px', borderRadius: '50px', fontWeight: 'bold', cursor: 'pointer' }}>
               {t.btnMore}
             </button>
           </div>
         </div>
 
         {/* HİZMETLER */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px', width: '100%', maxWidth: '1100px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', width: '100%', maxWidth: '1100px' }}>
           {[
             { title: t.s1Title, desc: t.s1Desc, icon: '♻️' },
             { title: t.s2Title, desc: t.s2Desc, icon: '📊' },
             { title: t.s3Title, desc: t.s3Desc, icon: '🌱' }
           ].map((s, i) => (
-            <div key={i} style={{ padding: '40px 30px', borderRadius: '24px', backgroundColor: 'rgba(255,255,255,0.02)', border: '1px solid rgba(16,185,129,0.15)', textAlign: 'left', backdropFilter: 'blur(5px)' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '20px' }}>{s.icon}</div>
-              <h3 style={{ color: '#10b981', marginBottom: '12px', fontSize: '1.4rem' }}>{s.title}</h3>
-              <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: '1.6' }}>{s.desc}</p>
+            <div key={i} style={{ 
+              padding: '40px 30px', 
+              borderRadius: '24px', 
+              backgroundColor: 'rgba(255,255,255,0.02)', 
+              border: '1px solid rgba(16,185,129,0.1)', 
+              textAlign: 'left'
+            }}>
+              <div style={{ fontSize: '2rem', marginBottom: '20px' }}>{s.icon}</div>
+              <h3 style={{ color: '#10b981', marginBottom: '10px' }}>{s.title}</h3>
+              <p style={{ color: '#888', fontSize: '0.95rem', lineHeight: '1.5' }}>{s.desc}</p>
             </div>
           ))}
         </div>
       </main>
 
       {/* FOOTER */}
-      <footer style={{ backgroundColor: 'black', width: '100%', padding: '60px 20px', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ maxWidth: '1100px', width: '100%', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '30px' }}>
+      <footer style={{ backgroundColor: 'black', width: '100%', padding: '60px 20px', borderTop: '1px solid #111', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ maxWidth: '1100px', width: '100%', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '40px' }}>
           <div style={{ textAlign: 'left' }}>
-            <h4 style={{ color: '#10b981', margin: '0 0 10px 0' }}>Circular Culture</h4>
-            <p style={{ color: '#666', fontSize: '0.85rem', maxWidth: '250px' }}>{t.footerText}</p>
+            <h4 style={{ color: '#10b981', marginBottom: '15px' }}>Circular Culture</h4>
+            <p style={{ color: '#555', fontSize: '0.85rem', maxWidth: '300px' }}>{t.footerText}</p>
           </div>
           <div style={{ textAlign: 'left' }}>
-            <h5 style={{ color: 'white', margin: '0 0 10px 0' }}>{t.contact}</h5>
-            <p style={{ color: '#666', fontSize: '0.85rem', margin: '5px 0' }}>info@circularculture.com.tr</p>
+            <h5 style={{ color: 'white', marginBottom: '15px' }}>{t.contact}</h5>
+            <p style={{ color: '#555', fontSize: '0.85rem' }}>info@circularculture.com.tr</p>
           </div>
         </div>
       </footer>
