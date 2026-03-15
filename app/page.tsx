@@ -65,7 +65,7 @@ const translations: any = {
     s3Title: "Transformación Verde",
     s3Desc: "Hojas de ruta para reducir su huella de carbono.",
     footerText: "Definiendo el futuro circular.",
-    contact: "Contacto"
+    contact: "Contact"
   }
 };
 
@@ -74,22 +74,25 @@ export default function Home() {
   const t = translations[lang] || translations.TR;
 
   return (
-    <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white' }}>
+    <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', fontFamily: 'sans-serif' }}>
       
-      {/* ORANTILI NAVBAR */}
+      {/* NAVBAR */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: '70px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0 20px', background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)',
         borderBottom: '1px solid rgba(255,255,255,0.1)', zIndex: 10000
       }}>
+        {/* LOGO */}
         <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#10b981' }}>CC</div>
         
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          <span style={{ fontSize: '0.9rem', color: '#aaa', cursor: 'pointer' }}>{t.aboutTitle}</span>
+        {/* SAĞ TARAF: HAKKIMIZDA + BAYRAKLAR */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <span style={{ fontSize: '0.85rem', color: '#aaa', fontWeight: '500' }}>{t.aboutTitle}</span>
+          
           <div style={{
-            display: 'flex', gap: '8px', background: 'rgba(255,255,255,0.05)',
-            padding: '5px 10px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.1)'
+            display: 'flex', gap: '10px', background: 'rgba(255,255,255,0.05)',
+            padding: '6px 14px', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.1)'
           }}>
             {[
               { id: 'TR', f: '🇹🇷' }, { id: 'EN', f: '🇬🇧' }, 
@@ -101,7 +104,7 @@ export default function Home() {
                 style={{
                   background: 'transparent', border: 'none', cursor: 'pointer',
                   fontSize: '18px', opacity: lang === langObj.id ? '1' : '0.2',
-                  transition: '0.3s'
+                  transition: '0.3s', display: 'flex', alignItems: 'center'
                 }}
               >
                 {langObj.f}
@@ -113,22 +116,24 @@ export default function Home() {
 
       <main style={{ 
         paddingTop: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center',
-        background: 'radial-gradient(circle at center, #052c1e 0%, black 100%)'
+        background: 'radial-gradient(circle at center, #052c1e 0%, black 100%)',
+        overflowX: 'hidden'
       }}>
+        
         {/* HERO */}
-        <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4rem)', color: '#10b981', fontWeight: '900' }}>{t.heroTitle}</h1>
-          <p style={{ color: '#aaa', marginTop: '20px' }}>{t.heroSub}</p>
-          <div style={{ marginTop: '30px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
-            <button style={{ background: '#10b981', color: 'white', border: 'none', padding: '12px 25px', borderRadius: '50px', fontWeight: 'bold' }}>{t.btnAudit}</button>
-            <button style={{ background: 'transparent', color: 'white', border: '1px solid #444', padding: '12px 25px', borderRadius: '50px' }}>{t.btnMore}</button>
+        <div style={{ textAlign: 'center', padding: '40px 20px', maxWidth: '850px' }}>
+          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4.5rem)', color: '#10b981', fontWeight: '900', letterSpacing: '-1px' }}>{t.heroTitle}</h1>
+          <p style={{ color: '#aaa', marginTop: '20px', fontSize: '1.1rem', lineHeight: '1.6' }}>{t.heroSub}</p>
+          <div style={{ marginTop: '35px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button style={{ background: '#10b981', color: 'white', border: 'none', padding: '14px 30px', borderRadius: '50px', fontWeight: 'bold', cursor: 'pointer' }}>{t.btnAudit}</button>
+            <button style={{ background: 'transparent', color: 'white', border: '1px solid #444', padding: '14px 30px', borderRadius: '50px', cursor: 'pointer' }}>{t.btnMore}</button>
           </div>
         </div>
 
-        {/* HAKKIMIZDA */}
-        <section style={{ maxWidth: '800px', padding: '60px 20px', textAlign: 'center' }}>
-          <h2 style={{ color: '#10b981' }}>{t.aboutTitle}</h2>
-          <p style={{ color: '#ccc', marginTop: '15px', lineHeight: '1.6' }}>{t.aboutText}</p>
+        {/* HAKKIMIZDA BÖLÜMÜ */}
+        <section style={{ maxWidth: '800px', padding: '80px 20px', textAlign: 'center' }}>
+          <h2 style={{ color: '#10b981', fontSize: '1.8rem', marginBottom: '20px' }}>{t.aboutTitle}</h2>
+          <p style={{ color: '#ccc', lineHeight: '1.8', fontSize: '1.05rem' }}>{t.aboutText}</p>
         </section>
 
         {/* HİZMETLER */}
@@ -142,17 +147,21 @@ export default function Home() {
             { t: t.s3Title, d: t.s3Desc, i: '🌱' }
           ].map((s, idx) => (
             <div key={idx} style={{ 
-              padding: '30px', borderRadius: '20px', background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(16,185,129,0.1)'
+              padding: '35px', borderRadius: '24px', background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(16,185,129,0.1)', transition: '0.3s'
             }}>
-              <div style={{ fontSize: '2rem' }}>{s.i}</div>
-              <h3 style={{ color: '#10b981', marginTop: '15px' }}>{s.t}</h3>
-              <p style={{ color: '#888', fontSize: '0.9rem' }}>{s.d}</p>
+              <div style={{ fontSize: '2.5rem', marginBottom: '15px' }}>{s.i}</div>
+              <h3 style={{ color: '#10b981', fontSize: '1.4rem', marginBottom: '10px' }}>{s.t}</h3>
+              <p style={{ color: '#888', fontSize: '0.95rem', lineHeight: '1.5' }}>{s.d}</p>
             </div>
           ))}
         </div>
       </main>
 
-      <footer style={{ padding: '40px', textAlign: 'center', borderTop: '1px solid #222' }}>
-        <p style={{ color: '#10b981' }}>Circular Culture</p>
-        <p style={{ color: '#444', fontSize: '0.8rem' }}>© 2026. {t.footerText}</p>
+      <footer style={{ padding: '60px 20px', textAlign: 'center', borderTop: '1px solid #111' }}>
+        <p style={{ color: '#10b981', fontWeight: 'bold', fontSize: '1.1rem' }}>Circular Culture</p>
+        <p style={{ color: '#444', fontSize: '0.85rem', marginTop: '10px' }}>© 2026. {t.footerText}</p>
+      </footer>
+    </div>
+  );
+}
